@@ -16,7 +16,7 @@ fn main(){
     while my_memory.get_instruction_counter() < my_memory.get_instructions().len().try_into().unwrap() {
         let word_index = my_memory.get_instruction_counter().try_into().unwrap();
         let word =  my_memory.get_mem_val(0,word_index);
-        rumdis::disassemble(&mut my_memory,word);
+        rumdis::disassemble(&mut my_memory,word/* ,wowi*/);
         //wowi += 1;
         //println!("{}",wowi); 
     }

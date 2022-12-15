@@ -164,12 +164,12 @@ pub fn input(mem:&mut Rummemory, rc:u32){
 /// * `rc`: the index of the r[C] regs
 pub fn loadp(mem:&mut Rummemory, rb:u32, rc:u32){
     //Comment out for performance
-    //if mem.get_regs(rb.try_into().unwrap()) != 0{
+    if mem.get_regs(rb.try_into().unwrap()) != 0{
         let new_index = mem.get_regs(rb.try_into().unwrap());
         let dopple = mem.get_mem_seg(new_index.try_into().unwrap()).clone();
         //println!("{:?}",dopple);
         mem.set_instructions(dopple);
-    //}
+    }
     let reg_c = mem.get_regs(rc.try_into().unwrap());
     //let new_counter = mem.get_mem_val(0,reg_c.try_into().unwrap());
     mem.set_instruction_counter(reg_c);

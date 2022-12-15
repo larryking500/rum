@@ -34,7 +34,7 @@ enum Opcode{CMov,SegLoad,SegStore,Add,Mult,Div,Nand,Halt,MapSeg,UnmapSeg,Output,
 /// * `mem`: memory that is being manipulated
 /// * `inst`: the u32 word instruction that is being broken into opcode and ra
 /// rb, and rc.
-pub fn disassemble(current_memory:&mut Rummemory,inst: Umi){
+pub fn disassemble(current_memory:&mut Rummemory,inst: Umi/* , countz:u128*/){
     match get(&OP, inst) {
         o if o == Opcode::CMov as u32 => {
             cmove(current_memory,get(&RA, inst), get(&RB, inst), get(&RC, inst));
