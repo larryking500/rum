@@ -41,9 +41,10 @@ impl Rummemory{
     /// * `rb`: the index of the mem seg that is getting replaced
     pub fn mem_seg(&mut self, new_mem:Vec<u32>, rb:usize){
         if !self.queue.is_empty(){
-            self.memory[self.queue[0] as usize] = new_mem;
-            self.regs[rb] = self.queue[0];
-            self.queue.remove(0);
+            let new_index = self.queue.pop().unwrap();
+            self.memory[new_index as usize] = new_mem;
+            self.regs[rb] = new_index;
+            
         }
         else{
             self.memory.push(new_mem);
